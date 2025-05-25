@@ -2,19 +2,13 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials, firestore
-import os
-import json
 
+# Inisialisasi Flask
 app = Flask(__name__)
 CORS(app)
 
-# Ambil config dari environment variable
-firebase_config_json = os.environ.get("FIREBASE_ADMIN_CONFIG")
-if not firebase_config_json:
-    raise ValueError("FIREBASE_ADMIN_CONFIG environment variable is not set")
-
-firebase_config = json.loads(firebase_config_json)
-cred = credentials.Certificate(firebase_config)
+# Inisialisasi Firebase
+cred = credentials.Certificate("homesale-54d8b-firebase-adminsdk-fbsvc-762ca3cecb.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
