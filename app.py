@@ -5,7 +5,7 @@ from firebase_admin import credentials, firestore
 
 # Inisialisasi Flask
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:8000"}})  # Izinkan semua origin
+CORS(app)
 
 # Inisialisasi Firebase
 cred = credentials.Certificate("homesale-54d8b-firebase-adminsdk-fbsvc-762ca3cecb.json")
